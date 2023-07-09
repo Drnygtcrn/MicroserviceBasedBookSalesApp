@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login" (ngSubmit)="onSubmit()">
+				<div class="login__field">
+					<input type="text" name="email" [(ngModel)]="sorgu.email" class="login__input" placeholder="Email" >
+				</div>
+				<div class="login__field">
+					
+					<input type="password" name="password" [(ngModel)]="sorgu.password" class="login__input" placeholder="Password">
+				</div>
+				<button class="button login__submit" type="submit">
+					<span class="button__text" >Log In </span>
+				</button>				
+			</form>
+		</div>
+		<div class="screen__background">	
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>

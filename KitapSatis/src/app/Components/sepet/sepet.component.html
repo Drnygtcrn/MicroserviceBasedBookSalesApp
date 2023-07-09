@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="shopping-cart">
+          <div class="title">
+            Sepetiniz
+          </div>  
+          <div *ngFor="let product of Basket.Products">
+                
+                  <div class="item">
+                 
+                    <div class="image">
+                      <img src="{{product.img}}" alt="" />
+                    </div>
+                 
+                    <div class="description">
+                      <span>{{product.name}}</span>
+                      <span>{{product.author}}</span>
+                      <span>{{product.publisher}}</span>
+                    </div>
+                 
+                    <div class="quantity">
+                      <button class="minus-btn" type="button" (click)="decreaseQuantity(product)" name="button">
+                        <i class="fa-solid fa-minus"></i>
+                      </button>
+                      <input type="text" name="name" value={{product.quantity}}>
+                      <button class="plus-btn" type="button" (click)="increaseQuantity(product)" name="button">
+                          <i class="fa-solid fa-plus"></i>
+                      </button>
+                    </div>
+                 
+                    <div class="total-price">{{ getTotalPrice(product) }}₺</div>
+                    <div class="aa">
+                      <button class="plus-btn" type="button" (click)="delete(product)" name="button">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="as">
+              <span class="total-price">Sepet Toplam Tutar: {{totalPrice}}₺</span>
+              <span class="devam">
+                <button class="button-74" (click)="order()" role="button"><i class="fa-solid fa-arrow-right"></i></button>
+              </span>
+            </div>
+             
+            
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>

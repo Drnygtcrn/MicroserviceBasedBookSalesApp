@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-3">
+            <div class="foto">
+                <img mat-card-image src="{{kitab.img}}" alt="">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="d-flex flex-column comment-section">
+                
+                <div class="shopping-cart">
+                    <div class="header">
+                      <span class="title">{{kitab.name}}</span>
+                      <span class="title"><ul class="ratings">
+                        <li class="star"></li>
+                        <li class="star"></li>
+                        <li class="star"></li>
+                        <li class="star"></li>
+                        <li class="star"></li>
+                      </ul></span>
+                    </div>
+                    <div class="content">
+                      <span class="details">Yazar,  {{kitab.publisher}}</span>
+                      <span class="details">Yayın Evi,   {{kitab.publication_year}}</span>
+                      <span class="details">Sayfa Sayısı, {{kitab.number_of_pages}}</span>
+                      <span class="details">Dil, {{kitab.language}}</span>
+                      <span class="details">Tür, {{kitab.type}}</span>
+                    </div>
+                  </div>
+                  
+                  <div *ngFor="let yorum of yorumlar">
+                    <div class="shopping-cart">
+                        <div class="bg-white p-2">
+                            <div class="d-flex flex-row user-info">
+                                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{{yorum.User?.Username}}</span><span class="date text-black-50"></span></div>
+                            </div>
+                            <div class="mt-2">
+                                <p class="comment-text">{{yorum.comment}}</p>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="shopping-cart">
+                    <div class="bg-white p-2">
+                        <div class="d-flex flex-row user-info">
+                            <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Kullanıcı Adı</span><span class="date text-black-50"></span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-lightt p-2">
+                        <div class="d-flex flex-row align-items-start"><textarea [(ngModel)]="comment" class="form-control ml-1 shadow-none textarea" placeholder="Yorum ekleyiniz."></textarea></div>
+                        <div class="xf">
+                            <div class="mt-2 text-right">
+                                <button class="button-13" type="button" (click)="ekle()"><i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

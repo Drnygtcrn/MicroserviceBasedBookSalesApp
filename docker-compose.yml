@@ -1,0 +1,173 @@
+version: "3"
+services:
+  nosql-db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: nosql-db
+    restart: always
+    volumes:
+      - ./data:/data/db
+    networks:
+      - express-mongo
+
+
+  gateway:
+    build:
+      dockerfile: Dockerfile
+      context: ./gateway
+    container_name: gateway
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - "nosql-db"
+    volumes:
+      - .:/app
+      - /app/gateway/node_modules
+    networks:
+      - express-mongo
+  
+  products:
+    build:
+      dockerfile: Dockerfile
+      context: ./products
+    container_name: products
+    ports:
+      - "8001:8001"
+    restart: always
+    depends_on:
+      - "nosql-db"
+      - "gateway"
+    volumes:
+      - ./products:/app/products
+      - /app/products/node_modules
+    
+    networks:
+      - express-mongo
+  
+  basket:
+    build:
+      dockerfile: Dockerfile
+      context: ./basket
+    container_name: basket
+    ports:
+      - "8003:8003"
+    restart: always
+    depends_on:
+      - "nosql-db"
+      - "gateway"
+    volumes:
+      - ./basket:/app/basket
+      - /app/basket/node_modules
+    
+    networks:
+      - express-mongo
+
+  customers:
+    build:
+      dockerfile: Dockerfile
+      context: ./customers
+    container_name: customers
+    ports:
+      - "8002:8002"
+    restart: always
+    depends_on:
+      - "nosql-db"
+      - "gateway"
+    volumes:
+      - ./customers:/app/customers
+      - /app/customers/node_modules
+    
+    networks:
+      - express-mongo
+  
+  degerlendirme:
+    build:
+      dockerfile: Dockerfile
+      context: ./degerlendirme
+    container_name: degerlendirme
+    ports:
+      - "8005:8005"
+    restart: always
+    depends_on:
+      - "nosql-db"
+      - "gateway"
+    volumes:
+      - ./degerlendirme:/app/degerlendirme
+      - /app/degerlendirme/node_modules
+    
+    networks:
+      - express-mongo
+
+  order:
+    build:
+      dockerfile: Dockerfile
+      context: ./order
+    container_name: order
+    ports:
+      - "8004:8004"
+    restart: always
+    depends_on:
+      - "nosql-db"
+      - "gateway"
+    volumes:
+      - ./order:/app/order
+      - /app/order/node_modules
+    
+    networks:
+      - express-mongo
+
+  storage:
+    build:
+      dockerfile: Dockerfile
+      context: ./storage
+    container_name: storage
+    ports:
+      - "8006:8006"
+    restart: always
+    depends_on:
+      - "nosql-db"
+      - "gateway"
+    volumes:
+      - ./storage:/app/storage
+      - /app/storage/node_modules
+    
+    networks:
+      - express-mongo
+  
+  whislist:
+    build:
+      dockerfile: Dockerfile
+      context: ./whislist
+    container_name: whislist
+    ports:
+      - "8007:8007"
+    restart: always
+    depends_on:
+      - "nosql-db"
+      - "gateway"
+    volumes:
+      - ./whislist:/app/whislist
+      - /app/whislist/node_modules
+    
+    networks:
+      - express-mongo
+  
+  angular:
+    build:
+      context: ./KitapSatis
+      dockerfile: Dockerfile
+    container_name: angular
+    ports:
+      - "4200:4200"
+    restart: always
+    volumes:
+      - ./KitapSatis:/app/kitapsatis
+      - /app/kitapsatis/node_modules
+    
+
+networks:
+  express-mongo:
+
+ 

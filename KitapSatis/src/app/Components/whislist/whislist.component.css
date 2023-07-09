@@ -1,0 +1,155 @@
+
+.button-24 {
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 3 0px;
+    outline: 0;
+    padding: 10px 10px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .button-24:hover,
+  .button-24:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #FF4742;
+  }
+  
+  .button-24:active {
+    opacity: .5;
+  }
+  
+  .ekle-button{
+    text-align: left;
+  }
+  .article-title{
+    
+    font-family: 'Raleway','Arial',sans-serif;
+    text-transform: uppercase;
+    font-size:large;
+    text-align: left;
+  }
+  .publish-date{
+    font-family: 'Raleway','Arial',sans-serif;
+    text-transform: uppercase;
+    font-size:large;
+    text-align: left;
+  }
+  .article-author{
+    font-family: 'Raleway','Arial',sans-serif;
+    text-transform: uppercase;
+    font-size:large;
+    text-align: left;
+  }
+  
+  .article-card{
+    padding-left: 3%;
+    width: 300px;
+  }
+  
+  .image-box {
+    width: 60%;
+    height: 300px; /* Ayarladığınız fotoğraf alanı yüksekliği */
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  
+  
+  
+  
+  .kitap-card {
+    width: 300px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .kitap-card img {
+    width: 100%;
+    height: 300px;    
+    object-fit: fill;
+    object-position: center;
+    padding-bottom: 3%;
+  }
+  
+  
+  h4{
+    text-align: center;
+    font-size:large;
+    height: 40px;
+  }
+  p{
+    text-align: center;
+    font-size: medium;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  
+  .sidebar {
+    position:fixed;
+    top: 58px;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+  }
+  
+  @media (max-width: 991.98px) {
+    .sidebar {
+      width: 100%;
+    }
+  }
+  .sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+  
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 58px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
+  
+  

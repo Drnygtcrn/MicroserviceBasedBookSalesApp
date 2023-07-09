@@ -1,0 +1,333 @@
+<!--Main Navigation-->
+<header class="d-flex">
+  
+  <!-- Sidebar -->
+    
+      <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <div class="position-sticky">
+          <div class="list-group list-group-flush mx-3 mt-4">
+            <a  [class.active]="activeItem === 'Sipariş'" (click)="setActiveItem('Sipariş')" class="list-group-item list-group-item-action py-2 ripple">
+              <i class="fa-solid fa-receipt fa-fw me-3"></i><span>Siparişlerim</span>
+            </a>
+            <a  [class.active]="activeItem === 'Değerlendirmelerim'" (click)="setActiveItem('Değerlendirmelerim')" class="list-group-item list-group-item-action py-2 ripple">
+              <i class="fa-solid fa-book fa-fw me-3"></i><span>Değerlendirmelerim</span>
+            </a>
+            <a  [class.active]="activeItem === 'BilgileriniGuncelle'" (click)="setActiveItem('BilgileriniGuncelle')" class="list-group-item list-group-item-action py-2 ripple">
+              <i class="fa-solid fa-user fa-fw me-3"></i><span>Bilgilerini Güncelle</span>
+            </a>
+            <a  [class.active]="activeItem === 'Adreslerim'" (click)="setActiveItem('Adreslerim')" class="list-group-item list-group-item-action py-2 ripple">
+              <i class="fa-solid fa-map-pin fa-fw me-3"></i><span>Adresler Bilgilerim</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div class="container pt-4" *ngIf="activeItem === 'BilgileriniGuncelle'">
+       
+      <div class="container">
+        <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="row gutters">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h6 class="mb-2 text-primary">Personal Details</h6>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="fullName">Full Name</label>
+                  <input type="text" class="form-control" id="fullName" [(ngModel)]="Guncellenen.name" placeholder="Enter full name" value="{{profil.name}}">
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="eMail">Email</label>
+                  <input type="email" class="form-control" id="eMail" [(ngModel)]="Guncellenen.email" placeholder="Enter email ID" value="{{profil.email}}">
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="text" class="form-control" id="phone" [(ngModel)]="Guncellenen.phone" placeholder="Enter phone number" value="{{profil.phone}}">
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="website">Age</label>
+                  <input type="url" class="form-control" id="website" [(ngModel)]="Guncellenen.age" placeholder="Age" value="{{profil.age}}">
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="row gutters">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="text-right">
+                <button type="button" id="submit" name="submit" class="button-13" (click)="Guncelle()" >Update</button>
+                <button type="button" id="submit" name="submit" class="button-13" (click)="Iptal()">Cancel</button>                
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      </div>
+      
+
+      <!-- <div *ngIf="activeItem === 'Adreslerim'">
+       
+          <div class="container">
+            <div class="row gutters">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Adres Ekle</h6>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="Street">Street</label>
+                      <input type="text" class="form-control" id="Street" [(ngModel)]="Guncellenen.name" placeholder="Enter full name" value="{{profil.name}}">
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="eMail">postalCode</label>
+                      <input type="email" class="form-control" id="eMail" [(ngModel)]="Guncellenen.email" placeholder="Enter email ID" value="{{profil.email}}">
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="phone">City</label>
+                      <input type="text" class="form-control" id="phone" [(ngModel)]="Guncellenen.phone" placeholder="Enter phone number" value="{{profil.phone}}">
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="website">Country</label>
+                      <input type="url" class="form-control" id="website" [(ngModel)]="Guncellenen.age" placeholder="Age" value="{{profil.age}}">
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="text-right">
+                    <button type="button" id="submit" name="submit" class="button-13" (click)="Guncelle()" >Update</button>
+                    <button type="button" id="submit" name="submit" class="button-13" (click)="Iptal()">Cancel</button>                
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+          
+          </div> -->
+      <div *ngIf="activeItem === 'Adreslerim'">
+        
+
+       
+        <div class="row">
+          
+          <div *ngIf="seciliAdres.street">
+            <p class=" text-1"> Seçili Adres </p>
+            <div class="box">
+              <h1><span class="glyphicon glyphicon-earphone"></span></h1>
+              <h5>{{seciliAdres.street}}</h5><br>
+              <p>{{seciliAdres.city}},{{seciliAdres.country}}</p>
+              <p>{{seciliAdres.postalCode}}</p><br>
+              
+            </div>
+          </div>
+
+          <p class=" text-1"> Kayıtlı Adresler: </p>
+          <div *ngFor="let adres of adresler">
+            
+                  <div class="box">
+                    <h1><span class="glyphicon glyphicon-earphone"></span></h1>
+                    <h5>{{adres.street}}</h5><br>
+                    <p>{{adres.city}},{{adres.country}}</p>
+                    <p>{{adres.postalCode}}</p><br>
+                    <div class="butonlar">
+                    <button (click)="ActiveAddress(adres)" class="cek"><i class="fa-solid fa-check"></i></button>
+                    <button (click)="AddressSil(adres)"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </div>
+              
+            
+          
+           
+            
+              
+                
+          </div>    
+          
+        </div> 
+        <div class="container">
+          <div class="row gutters">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <h6 class="mb-2 text-primary">Adres Ekle</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="Street">Street</label>
+                        <input type="text" class="form-control" id="Street" [(ngModel)]="address.street" placeholder="Enter Street" >
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="postalCode">postalCode</label>
+                        <input type="text" class="form-control" id="postalCode" [(ngModel)]="address.postalCode" placeholder="Enter Postal Code" >
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" [(ngModel)]="address.city" placeholder="Enter City" >
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" id="country" [(ngModel)]="address.country" placeholder="Enter Country" >
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                      <button type="button" id="submit" name="submit" class="button-13" (click)="AddressEkle()" >Add Address</button>
+                         
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      </div>
+      
+      <div class="row" *ngIf="activeItem === 'Sipariş'">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="shopping-cart" *ngFor="let siparis of sipariss" >
+                <h2>Order #{{siparis._id ? siparis._id.slice(-6) : ''}}</h2>
+                <div class="item-header">
+                    <div class="item-name">Kitap Adı</div>
+                    <div class="item-quantity">Miktar</div>
+                    <div class="item-price">Birim Fiyat</div>
+                </div>
+                <div *ngFor="let kitap of siparis.Books">
+                  <div class="item">
+                    <div class="item-name">{{kitap.name}}</div>
+                    <div class="item-quantity">{{kitap.quantity}}</div>
+                    <div class="item-price">{{kitap.price}}₺</div>
+                </div>
+                </div>
+                <div class="status">Durum: {{siparis.status}}</div>
+                <div class="total">
+                    <div class="total-label">Toplam:</div>
+                    <div class="total-amount">{{siparis.total}}₺</div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+        
+      <div class="aa" *ngIf="activeItem === 'Değerlendirmelerim'"  >
+        <div *ngFor="let yorum of yorumlar">
+          <div class="shopping-cart">
+            <div class="bg-white p-2">
+                <div class="d-flex flex-row user-info">
+                    <div class="d-flex flex-column justify-content-start ml-2">
+                        <span class="d-block font-weight-bold name">{{yorum.Book?.name}}</span>
+                        <span class="date text-black-50"></span>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <p class="comment-text">{{yorum.comment}}</p>
+                    <p class="comment-text">{{yorum.rating}}/5</p>
+                </div>
+                <!-- <div class="abc">
+                  <button type="button" id="submit" name="submit" class="button-13"  (click)="CommentSil(yorum)">Delete</button> 
+                </div>              -->
+            </div>
+        </div>
+        
+        </div>
+               
+      </div>
+
+      
+      
+    <!-- Sidebar -->
+  </header>
+  <!--Main Navigation-->
+  
+  <!--Main layout-->
+  <main style="margin-top: 58px;">
+    <div class="container pt-4" *ngIf="activeItem === 'BilgileriniGuncelle'">
+    </div>
+  </main>
+  <!--Main layout-->
+
+
+
+  
+
+<!--
+  <div *ngFor="let adres of adresler" class="button-67" >
+            <button type="button" id="submit" name="submit" (click)="getAdresBilgileri(adres)"> Street: {{adres.street}} <br>
+              Postal Code: {{adres.postalCode}}<br>
+              City: {{adres.city}}<br>
+              Country: {{adres.country}}</button>
+          </div>
+-->
+
+
+
+<!--
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+      <div class="shopping-cart">
+          <h2>Order #Sipariş Numarası</h2>
+          <div class="item-header">
+              <div class="item-name">Kitap Adı</div>
+              <div class="item-quantity">Miktar</div>
+              <div class="item-price">Fiyat</div>
+          </div>
+          <div class="item">
+              <div class="item-name">Kitap 1</div>
+              <div class="item-quantity">3</div>
+              <div class="item-price">50₺</div>
+          </div>
+          <div class="item">
+              <div class="item-name">Kitap 2</div>
+              <div class="item-quantity">2</div>
+              <div class="item-price">40₺</div>
+          </div>
+          <div class="item">
+              <div class="item-name">Kitap 3</div>
+              <div class="item-quantity">1</div>
+              <div class="item-price">20₺</div>
+          </div>
+          <div class="total">
+              <div class="total-label">Toplam:</div>
+              <div class="total-amount">110₺</div>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+-->
+
+
+

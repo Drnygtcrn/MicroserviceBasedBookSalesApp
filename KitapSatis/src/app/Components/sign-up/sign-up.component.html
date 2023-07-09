@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login" (ngSubmit)="onSubmit()">
+				<div class="login__field">
+					<input type="text" name="name" [(ngModel)]="customer.name" class="login__input" placeholder="Name">
+				</div>
+                <div class="login__field">
+					<input type="text" name="email" [(ngModel)]="customer.email" class="login__input" placeholder="Email">
+				</div>
+				<div class="login__field">
+					<input type="password" name="password" [(ngModel)]="customer.password" class="login__input" placeholder="Password">
+				</div>
+                <div class="login__field">
+					<input type="text" name="phone" [(ngModel)]="customer.phone" class="login__input" placeholder="Phone (9 character)">
+				</div>
+                <div class="login__field">
+					<input type="text" name="age" [(ngModel)]="customer.age" class="login__input" placeholder="Age">
+				</div>
+				<button class="button login__submit" type="submit">
+					<span class="button__text">Sign Up</span>
+				</button>				
+			</form>
+		</div>
+		<div class="screen__background">	
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+

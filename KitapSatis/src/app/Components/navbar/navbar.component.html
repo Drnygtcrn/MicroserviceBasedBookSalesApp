@@ -1,0 +1,14 @@
+<div>
+  <ul class="snip1143">
+    <li [class.current]="activeLink === 'home'"><a href="" (click)="setActiveLink('home')" data-hover="Ana Sayfa">Ana Sayfa</a></li>
+    <li [ngClass]="{ 'current': activeLink === 'favoriler' }"><a *ngIf="giris" href="Favoriler" (click)="setActiveLink('favoriler')" data-hover="Favoriler">Favoriler</a></li>
+    <li [ngClass]="{ 'current': activeLink === 'sepet' }"><a  *ngIf="giris" href="Sepet" (click)="setActiveLink('sepet')" data-hover="Sepetim">Sepetim</a></li>
+    <!--<li><a href="Order" data-hover="Sipariş">Sipariş</a></li>-->
+    <li [ngClass]="{ 'current': activeLink === 'profil' }"><a *ngIf="giris" href="Profil" (click)="setActiveLink('profil')" data-hover="Hesabım">Hesabım</a></li>
+    <li [ngClass]="{ 'current': activeLink === 'logIn' }"><a *ngIf="!giris" href="LogIn" (click)="setActiveLink('login')" data-hover="Giriş Yap">Giriş Yap</a></li>
+    <li [ngClass]="{ 'current': activeLink === 'signup' }"><a *ngIf="!giris" href="SignUp" (click)="setActiveLink('signup')" data-hover="Üye Ol">Üye Ol</a></li>
+    <li [ngClass]="{ 'current': activeLink === 'logout' }"><a *ngIf="giris" href="LogIn" (click)="setActiveLink('logout'); sakk()" data-hover="Çıkış Yap">Çıkış yap</a></li>
+  </ul>
+</div>
+
+

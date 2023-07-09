@@ -1,0 +1,26 @@
+const mongoose = require('mongoose');   //Kütüphaneyi dahil ettik
+
+const Schema = mongoose.Schema;   
+
+const DegerlendirmeSchema = new Schema({       //Şema oluşturduk
+    User: {
+        UserId:{type:String},
+        Username: {type:String},
+    },
+    Book:{ 
+        proid:{type:String},
+        name:{type:String},
+        author:{type:String},
+        publisher:{type:String},
+        publication_year:{type:String},
+        number_of_pages:{type:String},
+        language:{type:String},
+        price:{type:String},
+        type:{type:String},
+        img:{type:String}
+    },
+    rating: String,
+    comment: String,
+});
+
+module.exports =  mongoose.model('degerlendirme', DegerlendirmeSchema);       //şemayı export ettik. ilk kısım adı, ikinci kısım modeli oluşturan şema

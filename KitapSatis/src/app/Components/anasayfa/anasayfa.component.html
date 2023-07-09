@@ -1,0 +1,239 @@
+<!--<div>
+    <div class="row"> 
+        <div class="col-md-2" id="asd">
+        </div>
+        <div class="col-md-8" id="aa">
+            <table class="flex items-center justify-content-center" *ngFor="let kitap of KitapListesi | paginate: { itemsPerPage: sayfadakiSayi, currentPage: p }">
+                <article class="article-card">
+                    <div class="image-box">
+                        <img   src="" class="article-banner">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title"> {{kitap.name}}</h3>
+                        <p>{{kitap.publisher}} </p>
+                        <div class="article-content-footer">
+                            <div class="author"> 
+                                <div class="author-info">
+                                    <div class="publish-date">{{kitap.publication_year}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+            </table>
+            <div class="d-flex justify-content-center">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+        <div class="col-md-2" id="ads">
+            
+        </div>
+    </div>
+    
+</div>
+-->
+<!--
+Kullanıcı Idsi {{_id}}
+<div>
+    <div class="row">
+      <div class="col-md-2" id="asd">
+      </div>
+      <div class="col-md-8" id="aa">
+        <div class="d-flex flex-wrap">
+          <div class="col-md-4" *ngFor="let kitap of KitapListesi | paginate: { itemsPerPage: sayfadakiSayi, currentPage: p }">
+            <article class="article-card">
+              <div class="image-box">
+                <img src="{{kitap.img}}" >
+              </div>
+              <div class="article-content">
+                <h3 class="article-title">{{ kitap.name }}</h3>
+                <p class="article-author">{{ kitap.author }}</p>
+                <div class="article-content-footer">
+                  <div class="author">
+                    <div class="author-info">
+                      <div class="publish-date">{{ kitap.publisher }}</div>
+                    </div>
+                  </div>
+                  <div class="ekle-button">
+                    <button class="button-24" role="button">{{kitap.price}} TL</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+      <div class="col-md-2" id="ads">
+  
+      </div>
+    </div>
+  </div>
+  
+-->
+<div class="row">
+  <div class="col-md-2">
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+  
+          <!-- Tümü -->
+          <a [class.active]="activeItem === 'Tümü'" (click)="setActiveItem('Tümü'); openSearch('Tümü')" class="list-group-item list-group-item-action py-2 ripple"><span>Tümü</span></a>
+  
+          <!-- Yazar -->
+          <a [class.active]="activeItem === 'Yazar'" (click)="setActiveItem('Yazar'); openSearch('yazar')" class="list-group-item list-group-item-action py-2 ripple">
+            <span>Yazar</span>
+          </a>
+  
+          <div *ngIf="searchCategory === 'yazar'" class="sub-menu">
+            <div *ngFor="let yazar of yazarListesi" class="sub-menu-item">
+              <button (click)="araYazar(yazar.author)">
+                {{yazar.author}} ({{yazar.sayac}})
+              </button>
+            </div>
+          </div>
+  
+          <!-- Yayın Evi -->
+          <a [class.active]="activeItem === 'YayinEvi'" (click)="setActiveItem('YayinEvi'); openSearch('yayinEvi')" class="list-group-item list-group-item-action py-2 ripple">
+            <span>Yayın Evi</span>
+          </a>
+  
+          <div *ngIf="searchCategory === 'yayinEvi'" class="sub-menu">
+            <div *ngFor="let yayinevi of yayinEviListesi" class="sub-menu-item">
+              <button (click)="araYayinEvi(yayinevi.publisher)">
+                {{yayinevi.publisher}} ({{yayinevi.sayac}})
+              </button>
+            </div>
+          </div>
+  
+          <!-- Tür -->
+          <a [class.active]="activeItem === 'Tur'" (click)="setActiveItem('Tur'); openSearch('tur')" class="list-group-item list-group-item-action py-2 ripple">
+            <span>Tür</span>
+          </a>
+  
+          <div *ngIf="searchCategory === 'tur'" class="sub-menu">
+            <div *ngFor="let tur of turListesi" class="sub-menu-item">
+              <button (click)="araTur(tur.type)">
+                {{tur.type}} ({{tur.sayac}})
+              </button>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+
+  <div class="col-md-10" *ngIf="activeItem === 'Tümü'">   <!-- Tümü -->
+    <div >
+      <div class="card-container">
+        <mat-card *ngFor="let kitap of KitapListesi | paginate: { itemsPerPage: sayfadakiSayi, currentPage: p }" class="kitap-card">
+          <img mat-card-image src="{{ kitap.img }}" alt="{{ kitap.name }}">
+          <mat-card-content>
+            <h4>{{ kitap.name }}</h4>
+            <p> <b>Yazar, </b> {{ kitap.author}}</p>
+            <p> <b>Yayın Evi, </b>{{ kitap.publisher }}</p>
+            <p> <b>Fiyat, </b> {{kitap.price}}₺</p>
+            <p><b>Tür, </b>{{ kitap.type }}</p>
+          </mat-card-content>
+          <mat-card-actions class="button-container">
+            <button mat-button color="primary" (click)="sepeteEkle(kitap)" ><i class="fas fa-shopping-cart"></i></button>
+            <button mat-button color="accent" (click)="listeyeEkle(kitap)" ><i class="fa-regular fa-heart"></i></button>
+            <button mat-button color="primary" (click)="detay(kitap)" ><i class="fa-solid fa-arrow-up"></i></button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="d-flex justify-content-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-10" *ngIf="activeItem === 'Yazar'">  <!-- Yazar -->
+    
+    <div>
+      <div class="card-container">
+        <ng-container *ngFor="let kitap of KitapListesi | paginate: { itemsPerPage: sayfadakiSayi, currentPage: p } ">
+          <mat-card *ngIf="kitap.author === yazarAramaKelimesi" class="kitap-card">
+            <img mat-card-image src="{{ kitap.img }}" alt="{{ kitap.name }}">
+            <mat-card-content>
+              <h4>{{ kitap.name }}</h4>
+              <p><b>Yazar, </b>{{ kitap.author }}</p>
+              <p><b>Yayın Evi, </b>{{ kitap.publisher }}</p>
+              <p><b>Fiyat, </b>{{ kitap.price }}₺</p>
+            </mat-card-content>
+            <mat-card-actions class="button-container">
+              <button mat-button color="primary" (click)="sepeteEkle(kitap)"><i class="fas fa-shopping-cart"></i></button>
+              <button mat-button color="accent" (click)="listeyeEkle(kitap)"><i class="fa-regular fa-heart"></i></button>
+              <button mat-button color="primary" (click)="detay(kitap)"><i class="fa-solid fa-arrow-up"></i></button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+        
+      </div>
+      <div class="d-flex justify-content-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-10" *ngIf="activeItem === 'YayinEvi'">  <!-- Yayın Evi -->
+    
+    <div>
+      <div class="card-container">
+        <ng-container *ngFor="let kitap of KitapListesi | paginate: { itemsPerPage: sayfadakiSayi, currentPage: p } ">
+          <mat-card *ngIf="kitap.publisher === yayinEviAramaKelimesi" class="kitap-card">
+            <img mat-card-image src="{{ kitap.img }}" alt="{{ kitap.name }}">
+            <mat-card-content>
+              <h4>{{ kitap.name }}</h4>
+              <p><b>Yazar, </b>{{ kitap.author }}</p>
+              <p><b>Yayın Evi, </b>{{ kitap.publisher }}</p>
+              <p><b>Fiyat, </b>{{ kitap.price }}₺</p>
+            </mat-card-content>
+            <mat-card-actions class="button-container">
+              <button mat-button color="primary" (click)="sepeteEkle(kitap)"><i class="fas fa-shopping-cart"></i></button>
+              <button mat-button color="accent" (click)="listeyeEkle(kitap)"><i class="fa-regular fa-heart"></i></button>
+              <button mat-button color="primary" (click)="detay(kitap)"><i class="fa-solid fa-arrow-up"></i></button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+      </div>
+      <div class="d-flex justify-content-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-10" *ngIf="activeItem === 'Tur'">  <!-- Tur-->
+    
+    <div>
+      <div class="card-container">
+        <ng-container *ngFor="let kitap of KitapListesi | paginate: { itemsPerPage: sayfadakiSayi, currentPage: p } ">
+          <mat-card *ngIf="kitap.type === TurAramaKelimesi" class="kitap-card">
+            <img mat-card-image src="{{ kitap.img }}" alt="{{ kitap.name }}">
+            <mat-card-content>
+              <h4>{{ kitap.name }}</h4>
+              <p><b>Yazar, </b>{{ kitap.author }}</p>
+              <p><b>Yayın Evi, </b>{{ kitap.publisher }}</p>
+              <p><b>Fiyat, </b>{{ kitap.price }}₺</p>
+              <p><b>Tür, </b>{{ kitap.type }}</p>
+            </mat-card-content>
+            <mat-card-actions class="button-container">
+              <button mat-button color="primary" (click)="sepeteEkle(kitap)"><i class="fas fa-shopping-cart"></i></button>
+              <button mat-button color="accent" (click)="listeyeEkle(kitap)"><i class="fa-regular fa-heart"></i></button>
+              <button mat-button color="primary" (click)="detay(kitap)"><i class="fa-solid fa-arrow-up"></i></button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+      </div>
+      <div class="d-flex justify-content-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+  
+</div>
